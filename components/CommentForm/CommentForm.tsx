@@ -11,6 +11,7 @@ interface Post {
 export default function CommentForm() {
   const { postId } = useParams();
   const [post, setPost] = useState<Post | null>(null);
+  const [commentContent, setCommentContent] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/posts/" + postId)
@@ -18,15 +19,29 @@ export default function CommentForm() {
       .then((response) => setPost(response));
   }, []);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="bg-gray-200 h-screen flex flex-col items-center justify-center">
       <h1 className="text-5xl font-bold mb-64">
-        Replying to post: {post && post.title}
+        Replying to post: "{post && post.title}"
       </h1>
-      <form method="POST" action="http://localhost:3000/">
+      <form
+        method="POST"
+        action={`http://localhost:3000/posts/${postId}/comments`}
+      >
         <div className="flex flex-col gap-4 shadow-2xl border-gray-400 border p-6 rounded-2xl">
-          <label htmlFor="commentContent">Comment Content: </label>
-          <input className="bg-white rounded-2xl p-2" type="text" required />
+          <label htmlFor="content">Comment Content: </label>
+          <input
+            className="bg-white rounded-2xl p-2"
+            type="text"
+            name="content"
+            value={commentContent}
+            onChange={(e) => setCommentContent(e.target.value)}
+            required
+          />
           <button className="border-black border min-w-2xl self-center rounded-2xl hover:bg-gray-300 hover:cursor-pointer shadow-xl">
             Comment
           </button>
