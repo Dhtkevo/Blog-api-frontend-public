@@ -1,5 +1,3 @@
-import React from "react";
-
 interface CommentCardProps {
   content: string;
   createdAt: string;
