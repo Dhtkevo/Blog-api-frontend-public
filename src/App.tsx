@@ -3,9 +3,8 @@ import CommentForm from "../components/CommentForm/CommentForm";
 
 function App() {
   return (
-    //<PostsContainer />
     <>
-      <CommentForm />
+      <PostsContainer />
     </>
   );
 }

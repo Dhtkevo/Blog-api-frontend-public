@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router";
 
 export default function CommentForm() {
+  const params = useParams();
+
   return (
     <div className="bg-gray-200 h-screen flex flex-col items-center justify-center">
       <h1 className="text-5xl font-bold mb-64">Replying to: </h1>
