@@ -19,10 +19,6 @@ export default function CommentForm() {
       .then((response) => setPost(response));
   }, []);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div className="bg-gray-200 h-screen flex flex-col items-center justify-center">
       <h1 className="text-5xl font-bold mb-64">
